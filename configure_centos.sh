@@ -11,8 +11,6 @@ fi
 echo "Updating OS..."
 yum update -y
 yum groupinstall "Base" --skip-broken -y
-yum install epel-release
-yum install screen -y
 sed -i 's/^SELINUX=.*/SELINUX=disabled/' /etc/sysconfig/selinux
 sed -i 's/^SELINUX=.*/SELINUX=disabled/' /etc/selinux/config
 /usr/sbin/setenforce 0
