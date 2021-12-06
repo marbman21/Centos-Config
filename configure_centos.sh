@@ -18,7 +18,6 @@ iptables-save > /root/firewall.rules
 
 
 echo "Configuring SSH..."
-sed -i 's/^X11Forwarding.*/X11Forwarding no/' /etc/ssh/sshd_config
 sed -i 's/#UseDNS.*/UseDNS no/' /etc/ssh/sshd_config
 
 echo "Configuring SSD (if owning)..."
@@ -46,10 +45,6 @@ case $i in
                 EMAIL="${i#*=}"
 		echo "Avisando a $1..."
 	         cat "$LOGFILE" | sed ':a;N;$!ba;s/\n/<br>\n/g' | mailx -s "Servidor $(hostname -f) configurado con $(basename $0) $(echo -e "\nContent-Type: text/html")" -r "$(hostname -f) <$(hostname -f)>" "$EMAIL"
-	;;
-esac
-done
-
 	;;
 esac
 done
